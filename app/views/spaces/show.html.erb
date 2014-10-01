@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @space.number %> <%= @space.street %> <%= @space.suburb %> <%= @space.postcode %> <%= @space.state %> <%= @space.country %> (<%= link_to 'Edit', edit_space_path(@space) %>)
+</p>
+
+<p>Space schedule:</p>
+
+<table class="table table-bordered">
+	<tr>
+<% @days_of_week.each do |day_of_week| %>
+	<th width="150px"><%= day_of_week %> (<%= link_to 'set', edit_schedule_path(day: day_of_week) %>)</th>
+<% end %>
+	</tr>
+	
+	<tr>
+<% @space.schedules.each do |schedule| %>
+	<th width="150px"><%= schedule.start_time %></th>
+<% end %>
+	</tr>
+	<tr>
+<% @space.schedules.each do |schedule| %>
+	<th width="150px"><%= schedule.end_time %></th>
+<% end %>
+	</tr>
+</table>
+
+
+<p>Upcoming bookings:</p>
+
+<ul>
+  <% @space.bookings.each do |booking| %>
+  <li><%= booking_details(booking) %></li>
+  <% end %>
+</ul>
+
+<% if @space.user == current_user %>
+	<%= link_to 'Book your space', new_booking_path(space: @space, block: true) %>
+<% else %>
+	<%= link_to 'Book this space', new_booking_path(space: @space) %>
+<% end %>
+

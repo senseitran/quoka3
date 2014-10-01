@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: senseitran
+  api_key: '586532625725114'
+  api_secret: XmbFXymphbrWCKBi8v63AFGrzDk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: senseitran
+  api_key: '586532625725114'
+  api_secret: XmbFXymphbrWCKBi8v63AFGrzDk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: senseitran
+  api_key: '586532625725114'
+  api_secret: XmbFXymphbrWCKBi8v63AFGrzDk
+  enhance_image_tag: true
+  static_image_support: false
