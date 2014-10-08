@@ -8,7 +8,11 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    if params[:search]
+      @nearby_locations = Space.near(params[:search], 5)
+    else
+      @spaces = Space.all
+    end
   end
 
   # GET /spaces/1

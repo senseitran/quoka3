@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Day</th>
       <th>Start time</th>
       <th>End time</th>
       <th>Space</th>
@@ -14,9 +13,8 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.day %></td>
-        <td><%= schedule.start_time %></td>
-        <td><%= schedule.end_time %></td>
+        <td><%= schedule.mon_start %></td>
+        <td><%= schedule.mon_end %></td>
         <td><%= schedule.space %></td>
         <td><%= link_to 'Show', schedule %></td>
         <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>

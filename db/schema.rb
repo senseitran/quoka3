@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929035754) do
+ActiveRecord::Schema.define(version: 20141006043016) do
 
   create_table "accounts", force: true do |t|
     t.string   "first_name"
@@ -50,12 +50,23 @@ ActiveRecord::Schema.define(version: 20140929035754) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "schedules", force: true do |t|
-    t.string   "day"
-    t.string   "start_time"
-    t.string   "end_time"
     t.integer  "space_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mon_start"
+    t.string   "tue_start"
+    t.string   "wed_start"
+    t.string   "thu_start"
+    t.string   "fri_start"
+    t.string   "sat_start"
+    t.string   "sun_start"
+    t.string   "mon_end"
+    t.string   "tue_end"
+    t.string   "wed_end"
+    t.string   "thu_end"
+    t.string   "fri_end"
+    t.string   "sat_end"
+    t.string   "sun_end"
   end
 
   add_index "schedules", ["space_id"], name: "index_schedules_on_space_id"

@@ -10,6 +10,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/1
   # GET /schedules/1.json
   def show
+
   end
 
   # GET /schedules/new
@@ -21,16 +22,12 @@ class SchedulesController < ApplicationController
     redirect_to @schedules
     end
 
-    if params[:day]
-    @schedule.day = params[:day]
-    end
-
   end
 
   # GET /schedules/1/edit
   def edit
-    if params[:day]
-    @schedule.day = params[:day]
+    if params[:schedule]
+    @schedule = params[:schedule]
     end
   end
 
@@ -82,6 +79,6 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:day, :start_time, :end_time, :space_id)
+      params.require(:schedule).permit(:mon_start, :mon_end, :tue_start, :tue_end, :wed_start, :wed_end, :thu_start, :thu_end,  :fri_start, :fri_end,  :sat_start, :sat_end,  :sun_start, :sun_end, :space_id)
     end
 end
