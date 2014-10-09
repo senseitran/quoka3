@@ -15,12 +15,6 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
 
-    if params[:block]
-      @block = true
-    else
-      @block = false
-    end 
-
     if params[:space]
       @space = Space.find(params[:space])
     else

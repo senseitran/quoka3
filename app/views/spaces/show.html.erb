@@ -2,8 +2,10 @@
 
 <h3>Address:</h3>
 
-<p><%= @space.number %> <%= @space.street %> <%= @space.suburb %> <%= @space.postcode %> <%= @space.state %> <%= @space.country %> (<%= link_to 'Edit', edit_space_path(@space) %>)
+<p><%= @space.number %> <%= @space.street %> <%= @space.suburb %> <%= @space.state %> <%= @space.country %> (<%= link_to 'Edit', edit_space_path(@space) %>)
 </p>
+
+<% if @space.user == current_user %>
 
 <h3>Space schedule:</h3>
 
@@ -44,7 +46,6 @@
   </tbody>
 </table>
 
-
 <h3>Upcoming bookings:</h3>
 
 <ul>
@@ -53,10 +54,12 @@
   <% end %>
 </ul>
 
+<% end %>
+
 <% if @space.user == current_user %>
-	<%= link_to 'Blockout your space', new_booking_path(space: @space, block: true) %>
+  <%= link_to 'Blockout your space', new_booking_path(space: @space, block: true) %>
 <% else %>
-	<%= link_to 'Book this space', new_booking_path(space: @space) %>
+  <%= link_to 'Book this space', new_booking_path(space: @space) %>
 <% end %>
 
 <div style='width: 1200px;'>
@@ -86,6 +89,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(15);
 });
 </script>
 

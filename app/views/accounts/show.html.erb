@@ -45,7 +45,7 @@
     <ul>
 
     <% @spaces.each do |space| %>
-      <li><%= space.number %> <%= space.street %> <%= space.suburb %> <%= space.postcode %>, <%= space.state %> (<%= link_to 'View', space_path(space) %>)
+      <li><%= space.number %> <%= space.street %> <%= space.suburb %>, <%= space.state %> (<%= link_to 'View', space_path(space) %>)
       </li>
     <% end %>
       <li><%= link_to 'Add another space', new_space_path %></td>
@@ -68,7 +68,22 @@ handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers([
  
-     <% current_user.bookings.each do |booking| %>
+ <% if current_user.bookings == nil && current_user.spaces == nil %>
+
+ {
+      "lat": -33.8600, 
+      "lng": 151.2094,
+    },
+
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(13);
+});
+
+<% else %>
+
+    <% current_user.bookings.each do |booking| %>
     {
       "lat": <%= booking.space.latitude %>,
       "lng": <%= booking.space.longitude %>,
@@ -97,7 +112,11 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(15);
 });
+
+<% end %>
+
 </script>
 
 </div>
